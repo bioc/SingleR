@@ -42,7 +42,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // find_classic_markers
-Rcpp::List find_classic_markers(Rcpp::RObject mat, int nlabels, Rcpp::IntegerVector labels, Rcpp::Nullable<Rcpp::IntegerVector> blocks, Rcpp::Nullable<int> de_n, int nthreads);
+Rcpp::List find_classic_markers(Rcpp::RObject mat, int nlabels, Rcpp::IntegerVector labels, Rcpp::Nullable<Rcpp::IntegerVector> blocks, Rcpp::Nullable<Rcpp::IntegerVector> de_n, int nthreads);
 RcppExport SEXP _SingleR_find_classic_markers(SEXP matSEXP, SEXP nlabelsSEXP, SEXP labelsSEXP, SEXP blocksSEXP, SEXP de_nSEXP, SEXP nthreadsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -50,7 +50,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< int >::type nlabels(nlabelsSEXP);
     Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type labels(labelsSEXP);
     Rcpp::traits::input_parameter< Rcpp::Nullable<Rcpp::IntegerVector> >::type blocks(blocksSEXP);
-    Rcpp::traits::input_parameter< Rcpp::Nullable<int> >::type de_n(de_nSEXP);
+    Rcpp::traits::input_parameter< Rcpp::Nullable<Rcpp::IntegerVector> >::type de_n(de_nSEXP);
     Rcpp::traits::input_parameter< int >::type nthreads(nthreadsSEXP);
     rcpp_result_gen = Rcpp::wrap(find_classic_markers(mat, nlabels, labels, blocks, de_n, nthreads));
     return rcpp_result_gen;
