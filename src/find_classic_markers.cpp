@@ -13,7 +13,7 @@ Rcpp::List find_classic_markers(
     int nlabels,
     Rcpp::IntegerVector labels,
     Rcpp::Nullable<Rcpp::IntegerVector> blocks,
-    Rcpp::Nullable<int> de_n,
+    Rcpp::Nullable<Rcpp::IntegerVector> de_n,
     int nthreads
 ) {
     Rtatami::BoundNumericPointer parsed(mat);
