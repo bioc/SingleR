@@ -64,6 +64,7 @@ getClassicMarkers <- function(ref, labels, block=NULL, assay.type="logcounts", c
     } else {
         labels <- unlist(labels)
     }
+    stopifnot(!anyNA(labels))
 
     for (i in seq_along(ref)) {
         ref[[i]] <- .to_clean_matrix(ref[[i]], assay.type, check.missing, msg="ref", num.threads=num.threads)
@@ -83,10 +84,15 @@ getClassicMarkers <- function(ref, labels, block=NULL, assay.type="logcounts", c
 
     if (length(ref) > 1L) {
         block <- rep(seq_along(ref) - 1L, vapply(ref, ncol, FUN.VALUE=0L))
+        nblocks <- length(ref)
     } else if (!is.null(block)) {
-        block <- as.integer(factor(block)) - 1L
+        fblock <- factor(block)
+        stopifnot(!anyNA(fblock))
+        block <- as.integer(fblock) - 1L
+        nblocks <- nlevels(fblock)
     } else {
         block <- NULL
+        nblocks <- 0L
     }
 
     ref <- do.call(cbind, ref)
@@ -96,6 +102,7 @@ getClassicMarkers <- function(ref, labels, block=NULL, assay.type="logcounts", c
         initializeCpp(ref),
         length(ulabels),
         match(labels, ulabels) - 1L,
+        nblocks,
         block,
         de_n=de.n,
         nthreads=num.threads

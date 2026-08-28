@@ -12,6 +12,7 @@ Rcpp::List find_classic_markers(
     Rcpp::RObject mat,
     int nlabels,
     Rcpp::IntegerVector labels,
+    int nblocks,
     Rcpp::Nullable<Rcpp::IntegerVector> blocks,
     Rcpp::Nullable<Rcpp::IntegerVector> de_n,
     int nthreads
@@ -37,7 +38,7 @@ Rcpp::List find_classic_markers(
         singler_classic_markers::ChooseOptions opts;
         opts.num_threads = nthreads;
         opts.number = number;
-        markers = singler_classic_markers::choose_index(matrix, static_cast<const int*>(labels.begin()), opts);
+        markers = singler_classic_markers::choose_index(matrix, static_cast<const int*>(labels.begin()), nlabels, opts);
 
     } else {
         Rcpp::IntegerVector bb(blocks);
@@ -47,7 +48,7 @@ Rcpp::List find_classic_markers(
         singler_classic_markers::ChooseBlockedOptions opts;
         opts.num_threads = nthreads;
         opts.number = number;
-        markers = singler_classic_markers::choose_blocked_index(matrix, static_cast<const int*>(labels.begin()), static_cast<const int*>(bb.begin()), opts);
+        markers = singler_classic_markers::choose_blocked_index(matrix, static_cast<const int*>(labels.begin()), nlabels, static_cast<const int*>(bb.begin()), nblocks, opts);
     }
 
     // Returning everything in R space.

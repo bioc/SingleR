@@ -11,8 +11,8 @@ classify_single <- function(test, prebuilt, quantile, use_fine_tune, fine_tune_t
     .Call('_SingleR_classify_single', PACKAGE = 'SingleR', test, prebuilt, quantile, use_fine_tune, fine_tune_threshold, nthreads)
 }
 
-find_classic_markers <- function(mat, nlabels, labels, blocks, de_n, nthreads) {
-    .Call('_SingleR_find_classic_markers', PACKAGE = 'SingleR', mat, nlabels, labels, blocks, de_n, nthreads)
+find_classic_markers <- function(mat, nlabels, labels, nblocks, blocks, de_n, nthreads) {
+    .Call('_SingleR_find_classic_markers', PACKAGE = 'SingleR', mat, nlabels, labels, nblocks, blocks, de_n, nthreads)
 }
 
 set_executor <- function(ptr) {
