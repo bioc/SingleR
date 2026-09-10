@@ -13,13 +13,13 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Determine the package directory
       run: R --no-echo -e "cat(paste0('R_PKG_DIR=', .libPaths()[1], '\n'))" >> $GITHUB_ENV
 
     - name: Restore the package directory
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: ${{ env.R_PKG_DIR }}
         key: installed-packages
@@ -37,13 +37,13 @@ jobs:
       run: R --no-echo -e "cat(paste0('GYPSUM_DIR=', suppressMessages(gypsum::cacheDirectory()), '\nANNOTATION_HUB_DIR=', suppressMessages(AnnotationHub::getAnnotationHubOption('CACHE')), '\n'))" >> $GITHUB_ENV
 
     - name: Restore the gypsum directory
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: ${{ env.GYPSUM_DIR }}
         key: gypsum-cache
 
     - name: Restore the AnnotationHub directory
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: ${{ env.ANNOTATION_HUB_DIR }}
         key: AnnotationHub-cache
