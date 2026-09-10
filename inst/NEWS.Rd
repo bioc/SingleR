@@ -5,6 +5,8 @@
 \section{Version 2.16.0}{\itemize{
 \item Added \code{top=} option to \code{combineRecomputedResults()} to restrict the number of per-label markers used for integrated classification.
 This defaults to 10 to reduce the feature space for faster compute, but can be set to \code{Inf} to recover the previous results.
+
+\item Bugfix to \code{SingleR()} to respect non-default \code{assay.type.ref=}.
 }}
 
 \section{Version 2.14.0}{\itemize{
