@@ -2,6 +2,10 @@
 \title{SingleR News}
 \encoding{UTF-8}
 
+\section{Version 2.14.2}{\itemize{
+\item Bugfix to \code{SingleR()} to respect non-default \code{assay.type.ref=}.
+}}
+
 \section{Version 2.14.0}{\itemize{
 \item Added \code{hint.sce=} to \code{trainSingleR()} to nudge users towards setting a more appropriate \code{de.method=} for single-cell references.
 Similarly, suggest the use of \code{aggr.ref=TRUE} for large single-cell references.
